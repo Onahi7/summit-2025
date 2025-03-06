@@ -31,20 +31,25 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
+          cache: 'npm'
           
       - name: Install NPM Dependencies
         run: |
-          npm install
+          npm ci --prefer-offline
           npm run build
+        env:
+          NODE_ENV: production
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
           
       - name: Generate deployment package
         run: |
           mkdir -p deployment
-          cp -r .env.example composer.json composer.lock package.json package-lock.json webpack.mix.js artisan deployment/
+          cp -r .env.example composer.* package*.json webpack.mix.js artisan deployment/
           cp -r app bootstrap config database lang public resources routes storage tests vendor deployment/
           cd deployment && zip -r ../deployment.zip .
           
-      - name: Copy deployment package to server
+      - name: Secure copy to server
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.DO_HOST }}
@@ -53,7 +58,7 @@ jobs:
           source: "deployment.zip"
           target: "/tmp"
           
-      - name: Deploy to DigitalOcean
+      - name: Execute deployment
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.DO_HOST }}
@@ -61,7 +66,7 @@ jobs:
           key: ${{ secrets.DO_SSH_KEY }}
           script: |
             cd /var/www/napps-conference
-            unzip -o /tmp/deployment.zip -d ./
+            unzip -q -o /tmp/deployment.zip -d ./
             composer install --no-dev --optimize-autoloader
             php artisan migrate --force
             php artisan config:cache

@@ -4,10 +4,10 @@ import postcssImport from 'postcss-import'
 import postcssNesting from 'postcss-nesting'
 
 export default {
-  plugins: {
-    postcssImport: {},
-    postcssNesting: {},
-    tailwindcss: {},
-    autoprefixer: {},
-  },
+  plugins: [
+    postcssImport(),
+    postcssNesting(),
+    tailwindcss(),
+    autoprefixer()
+  ]
 }
