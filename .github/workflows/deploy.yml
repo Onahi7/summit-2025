@@ -13,6 +13,9 @@ jobs:
       DO_HOST: ${{ secrets.DO_HOST }}
       DO_USERNAME: ${{ secrets.DO_USERNAME }}
       DO_SSH_KEY: ${{ secrets.DO_SSH_KEY }}
+      VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+      VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+      NODE_ENV: production
       
     steps:
       - uses: actions/checkout@v3
@@ -23,6 +26,9 @@ jobs:
           php-version: '8.1'
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv
           coverage: none
+          
+      - name: Update Composer
+        run: composer update
           
       - name: Install Dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
@@ -37,11 +43,7 @@ jobs:
         run: |
           npm ci --prefer-offline
           npm run build
-        env:
-          NODE_ENV: production
-          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
-          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
-          
+        
       - name: Generate deployment package
         run: |
           mkdir -p deployment
