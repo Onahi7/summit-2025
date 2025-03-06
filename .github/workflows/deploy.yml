@@ -1,0 +1,57 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv
+          coverage: none
+          
+      - name: Install Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          
+      - name: Install NPM Dependencies
+        run: |
+          npm install
+          npm run build
+          
+      - name: Generate deployment package
+        run: |
+          mkdir -p deployment
+          cp -r .env.example composer.json composer.lock package.json package-lock.json webpack.mix.js artisan deployment/
+          cp -r app bootstrap config database lang public resources routes storage tests vendor deployment/
+          cd deployment && zip -r ../deployment.zip .
+          
+      - name: Deploy to DigitalOcean
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DO_HOST }}
+          username: ${{ secrets.DO_USERNAME }}
+          key: ${{ secrets.DO_SSH_KEY }}
+          script: |
+            cd /var/www/napps-conference
+            unzip -o /tmp/deployment.zip -d ./
+            composer install --no-dev --optimize-autoloader
+            php artisan migrate --force
+            php artisan config:cache
+            php artisan route:cache
+            php artisan view:cache
+            php artisan storage:link
+            sudo supervisorctl restart all
+            sudo systemctl reload nginx
