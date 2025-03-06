@@ -1,6 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-const forms = require('@tailwindcss/forms')
-
 module.exports = {
   content: [
     "./resources/**/*.blade.php",
@@ -25,7 +23,5 @@ module.exports = {
       }
     },
   },
-  plugins: [
-    forms
-  ],
+  plugins: [require('@tailwindcss/forms')],
 }

@@ -1,0 +1,6 @@
+# Make sure these lines are in your .env file with proper values:
+VITE_SUPABASE_URL=https://guinjclnfjjoswazvppr.supabase.co
+VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd1aW5qY2xuZmpqb3N3YXp2cHByIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDEyNDDkwNjYsImV4cCI6MjA1NjgyNTA2Nn0.Jj6EhHH-tCM593xRSBO-SfMhEU6ftayAi88MjE-qCj8
+
+# Your .env file needs both the database configuration for Laravel
+# AND the Supabase configuration for the frontend Vue application.

@@ -1,0 +1,12 @@
+# Database Configuration (SQLite for local development)
+DB_CONNECTION=sqlite
+DB_DATABASE=database/database.sqlite
+DB_FOREIGN_KEYS=true
+
+# Comment out or remove these PostgreSQL settings when using SQLite locally
+# DB_CONNECTION=pgsql
+# DB_HOST=db.guinjclnfjjoswazvppr.supabase.co
+# DB_PORT=5432
+# DB_DATABASE=postgres
+# DB_USERNAME=postgres
+# DB_PASSWORD=your-password-here

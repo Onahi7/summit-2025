@@ -39,6 +39,14 @@ jobs:
           node-version: '18'
           cache: 'npm'
           
+      - name: Prepare for ES Module build
+        run: |
+          # Use deployment-specific vite config that's ES Module compatible
+          cp vite.config.deploy.js vite.config.js
+          echo '{"type":"module"}' > package.type.json
+          jq -s '.[0] * .[1]' package.json package.type.json > package.new.json
+          mv package.new.json package.json
+          
       - name: Install NPM Dependencies
         run: |
           npm ci --prefer-offline

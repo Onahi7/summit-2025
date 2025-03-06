@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAPPS Conference Local Navigation</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #333;
+            border-bottom: 1px solid #eaeaea;
+            padding-bottom: 10px;
+        }
+        .card {
+            border: 1px solid #eaeaea;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+        }
+        h2 {
+            margin-top: 0;
+            color: #444;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        a {
+            color: #3490dc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .note {
+            background-color: #fffde7;
+            border-left: 4px solid #fbc02d;
+            padding: 10px 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .highlight {
+            background-color: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 10px 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .btn:hover {
+            background-color: #45a049;
+            text-decoration: none;
+        }
+        .btn-admin {
+            background-color: #f44336;
+        }
+        .btn-admin:hover {
+            background-color: #d32f2f;
+        }
+        .btn-participant {
+            background-color: #2196f3;
+        }
+        .btn-participant:hover {
+            background-color: #1976d2;
+        }
+        .btn-validator {
+            background-color: #ff9800;
+        }
+        .btn-validator:hover {
+            background-color: #f57c00;
+        }
+    </style>
+</head>
+<body>
+    <h1>NAPPS Conference - Local Testing Tools</h1>
+    
+    <div class="highlight">
+        <h2>Quick Login (No Password Required)</h2>
+        <p>Use these buttons to instantly login as different user types:</p>
+        <div>
+            <a href="/local-test/login-as-admin" class="btn btn-admin">Login as Admin</a>
+            <a href="/local-test/login-as-participant" class="btn btn-participant">Login as Participant</a>
+            <a href="/local-test/login-as-validator" class="btn btn-validator">Login as Validator</a>
+        </div>
+    </div>
+    
+    <div class="note">
+        <p><strong>Note:</strong> This page is only for local development and testing. The quick login buttons above will bypass normal authentication.</p>
+    </div>
+    
+    <div class="card">
+        <h2>Authentication</h2>
+        <ul>
+            <li><a href="/" target="_blank">Home / Default Route</a></li>
+            <li><a href="/login" target="_blank">Login Page</a></li>
+            <li><a href="/register" target="_blank">Registration Page</a></li>
+        </ul>
+    </div>
+    
+    <div class="card">
+        <h2>Admin Area</h2>
+        <ul>
+            <li><a href="/dashboard/admin" target="_blank">Admin Dashboard</a></li>
+            <li><a href="/dashboard/admin/reports" target="_blank">Admin Reports</a></li>
+        </ul>
+    </div>
+    
+    <div class="card">
+        <h2>Participant Area</h2>
+        <ul>
+            <li><a href="/dashboard/participant" target="_blank">Participant Dashboard</a></li>
+            <li><a href="/dashboard/participant/profile" target="_blank">Participant Profile</a></li>
+            <li><a href="/dashboard/participant/qr-code" target="_blank">Participant QR Code</a></li>
+        </ul>
+    </div>
+    
+    <div class="card">
+        <h2>Validator Area</h2>
+        <ul>
+            <li><a href="/dashboard/validator" target="_blank">Validator Dashboard</a></li>
+        </ul>
+    </div>
+    
+    <div class="card">
+        <h2>API Endpoints (For Testing)</h2>
+        <ul>
+            <li><a href="/api/user" target="_blank">Current User</a></li>
+        </ul>
+    </div>
+    
+    <div class="note">
+        <p><strong>Debug Info:</strong></p>
+        <p>If you're experiencing routing issues, you might need to:</p>
+        <ol>
+            <li>Make sure your <code>.env</code> file has all necessary variables</li>
+            <li>Check Laravel routes in <code>routes/web.php</code> and <code>routes/api.php</code></li>
+            <li>Verify Vue Router configuration in <code>resources/js/router.js</code></li>
+            <li>Confirm Supabase connection is working</li>
+        </ol>
+    </div>
+</body>
+</html>
