@@ -7,6 +7,63 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Overview
+This project utilizes Laravel as the backend and Vue.js as the frontend. This README provides a brief overview of the setup process.
+
+## Prerequisites
+Ensure that you have the following installed on your machine:
+- **PHP** (version 8.1 or higher)
+- **Composer** (for PHP dependency management)
+- **Node.js** (version 18 or higher)
+- **NPM** (Node Package Manager)
+- **Git** (for version control)
+
+## Installation Steps
+
+### Step 1: Clone the Repository
+```bash
+git clone <repository-url>
+cd napps-conference
+```
+
+### Step 2: Set Up the Backend (Laravel)
+1. Install PHP dependencies:
+   ```bash
+   composer install
+   ```
+2. Set up environment variables:
+   ```bash
+   cp .env.example .env
+   ```
+3. Generate application key:
+   ```bash
+   php artisan key:generate
+   ```
+4. Run migrations:
+   ```bash
+   php artisan migrate
+   ```
+
+### Step 3: Set Up the Frontend (Vue.js)
+1. Navigate to the frontend directory:
+   ```bash
+   cd resources/js
+   ```
+2. Install Node dependencies:
+   ```bash
+   npm install
+   ```
+
+### Step 4: Start the Applications
+1. Start the Laravel application:
+   ```bash
+   php artisan serve
+   ```
+2. Start the Vue.js application:
+   ```bash
+   npm run dev
+   ```
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
@@ -64,3 +121,6 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Conclusion
+This README provides a brief overview of setting up the NAPPS Conference project. For detailed documentation, refer to [DOCUMENTATION.md](cci:7://file:///c:/Users/HP/Desktop/napps-conference/DOCUMENTATION.md).
