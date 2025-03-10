@@ -24,5 +24,15 @@ export default defineConfig({
         alias: {
             '@': '/resources/js',
         }
+    },
+    build: {
+        // Ensure proper build settings for production
+        manifest: true,
+        outDir: 'public/build',
+        rollupOptions: {
+            output: {
+                manualChunks: undefined
+            }
+        }
     }
 });

@@ -1,0 +1,79 @@
+# Laravel and Vue.js Project Setup Instructions
+
+## Step 1: Install VSCode
+1. Download Visual Studio Code from the [official website](https://code.visualstudio.com/).
+2. Install it by following the installation prompts.
+
+## Step 2: Install Required Extensions
+1. Open VSCode.
+2. Go to the Extensions view by clicking on the Extensions icon in the Activity Bar on the side of the window or pressing `Ctrl + Shift + X`.
+3. Search for and install the following extensions:
+   - **PHP Intelephense** (for PHP support)
+   - **Laravel Blade Snippets** (for Blade template support)
+   - **Vetur** (for Vue.js support)
+   - **ESLint** (for JavaScript linting)
+   - **Prettier - Code formatter** (for code formatting)
+
+## Step 3: Install Node.js and NPM
+1. Download Node.js from the [official website](https://nodejs.org/).
+2. Install it by following the installation prompts. This will also install NPM (Node Package Manager).
+
+## Step 4: Install Composer
+1. Download Composer from the [official website](https://getcomposer.org/download/).
+2. Follow the instructions to install it globally on your system.
+
+## Step 5: Clone Your Project Repository
+1. Open a terminal in VSCode (`Ctrl + `).
+2. Navigate to the directory where you want to clone your project.
+3. Run the following command to clone your project:
+   ```bash
+   git clone <your-repository-url>
+   ```
+   Replace `<your-repository-url>` with the actual URL of your project repository.
+
+## Step 6: Install PHP Dependencies
+1. Navigate into your project directory:
+   ```bash
+   cd <your-project-directory>
+   ```
+2. Run the following command to install PHP dependencies:
+   ```bash
+   composer install
+   ```
+
+## Step 7: Install JavaScript Dependencies
+1. In the same terminal, run the following command to install JavaScript dependencies:
+   ```bash
+   npm install
+   ```
+
+## Step 8: Set Up Environment Configuration
+1. Copy the `.env.example` file to create a new `.env` file:
+   ```bash
+   cp .env.example .env
+   ```
+2. Update the `.env` file with your database and application settings.
+
+## Step 9: Generate Application Key
+Run the following command to generate a new application key:
+```bash
+php artisan key:generate
+```
+
+## Step 10: Run Migrations
+Run the following command to run your database migrations:
+```bash
+php artisan migrate
+```
+
+## Step 11: Start Development Server
+1. Run the following command to start the Laravel development server:
+   ```bash
+   php artisan serve
+   ```
+2. Your application should now be running at `http://localhost:8000`.
+
+## Summary
+You have now set up your Laravel and Vue.js project in VSCode. You can start developing your application by opening the project folder in VSCode and using the integrated terminal for running commands.
+
+If you have any specific configurations or additional steps you'd like to know about, feel free to ask!
