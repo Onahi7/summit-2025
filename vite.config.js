@@ -21,5 +21,11 @@ export default defineConfig({
         alias: {
             '@': '/resources/js',
         }
+    },
+    server: {
+        watch: {
+            ignored: ['**/vendor/**', '**/node_modules/**', '**/.git/**', '**/.heroku/**'],
+            followSymlinks: false
+        }
     }
 })

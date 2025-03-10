@@ -34,5 +34,11 @@ export default defineConfig({
                 manualChunks: undefined
             }
         }
+    },
+    server: {
+        watch: {
+            ignored: ['**/vendor/**', '**/node_modules/**', '**/.git/**', '**/.heroku/**'],
+            followSymlinks: false
+        }
     }
 });
